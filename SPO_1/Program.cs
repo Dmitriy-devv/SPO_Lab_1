@@ -41,7 +41,7 @@ namespace SPO_1
                 i++;
             }
 
-            //Этап 2 - Дерево выводов
+            // Этап 2 - Дерево выводов
             // Форматирование лексем
             var formated = FormatLexems(analizer.typeLexems, analizer.descriptions, analizer.lexems);
 
