@@ -166,7 +166,7 @@ namespace SPO_1
 
                 for (var j = result.Count - 1; j >= 0; j--)
                 {
-                    var convs = new Stack<string>(); // Добавление в стек дял проверки правил
+                    var convs = new Stack<string>(); // Добавление в стек для проверки правил
                     var convsCloned = new Stack<string>();
 
                     for (var k = result.Count - 1; k >= j; k--)
@@ -216,14 +216,14 @@ namespace SPO_1
 
         private static void Triads(IEnumerable<List<string>> triads, IEnumerable<string> lexems,
             IReadOnlyList<string> types,
-            IReadOnlyList<string> descriptions, out List<List<string>>? cleared)
+            IReadOnlyList<string> descriptions, out List<List<string>> cleared)
         {
             Console.Write("\n\n");
             Console.Write("Триады:");
 
             cleared = triads.ToList();
 
-            // Get all variables and numbers from code
+            // Получение всех переменных и чисел из кода
             List<string> values = lexems.Where((_, i) => types[i] == descriptions[1] || types[i] == descriptions[2])
                 .ToList();
 
@@ -235,14 +235,14 @@ namespace SPO_1
                     var lexem = list[i];
                     if (lexem != descriptions[7]) continue;
 
-                    // Replace each var/number with "a" symbol
+                    // Замена каждой переменной или числа на 'a'
                     list.Remove(lexem);
                     list.Insert(i, values[count]);
                     count++;
                 }
 
                 Console.Write("\n");
-                Console.Write(list.Last());
+                Console.Write(list.Last()); // Номер триады
                 Console.Write("\t");
                 for (var index = 0; index < list.Count - 1; index++)
                 {
@@ -331,7 +331,7 @@ namespace SPO_1
                     }
                 }
 
-            // Print table of assembly commands
+            // Вывод таблицы ассемблерных команд
             foreach (var asmCommand in asmCommands)
             {
                 Console.Write("\n");
@@ -378,6 +378,8 @@ namespace SPO_1
             return optimized;
         }
 
+
+        // Вывод ассемблерных команд после оптимизации
         private static void PrintOptimizedCommands(List<List<string>>? optimized)
         {
             if (optimized == null) return;
